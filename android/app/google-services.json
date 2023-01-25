@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "951819469763",
+    "project_id": "emojisushi-3909f",
+    "storage_bucket": "emojisushi-3909f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951819469763:android:6565618de1a70ac66d7376",
+        "android_client_info": {
+          "package_name": "com.layerok.emojisushi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951819469763-2bpainpc28epo1a2j79rjof9a6100tvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFHdTtF9W8zgrCEaLJVV1l6FuZ1xJ_m58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951819469763-2bpainpc28epo1a2j79rjof9a6100tvg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "951819469763-vek61o7cpmo1n553dir7s1dfjmr2ro8t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.armenotech.rwwallet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
