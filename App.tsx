@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React, {type PropsWithChildren, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -21,11 +21,12 @@ import {
 
 import {
   Colors,
-  DebugInstructions,
   Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import remoteConfig from '@react-native-firebase/remote-config';
 
 const Section: React.FC<
   PropsWithChildren<{
@@ -33,6 +34,35 @@ const Section: React.FC<
   }>
 > = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    remoteConfig()
+      .setConfigSettings({
+        minimumFetchIntervalMillis: 0,
+      })
+      .then(() =>
+        remoteConfig()
+          .setDefaults({
+            awesome_new_feature: 'disabled',
+          })
+          .then(() => remoteConfig().fetch(0))
+          .then(() => remoteConfig().activate())
+          .then(fetchedRemotely => {
+            if (fetchedRemotely) {
+              console.log(
+                'Configs were retrieved from the backend and activated.',
+              );
+              console.log('parameters', remoteConfig().getAll());
+            } else {
+              console.log(
+                'No configs were fetched from the backend, and the local configs were already activated',
+              );
+              console.log('parameters', remoteConfig().getAll());
+            }
+          }),
+      );
+  }, []);
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -86,7 +116,7 @@ const App = () => {
         </View>
       </ScrollView>
     </SafeAreaView>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
